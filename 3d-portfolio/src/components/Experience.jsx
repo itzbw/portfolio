@@ -7,6 +7,7 @@ import {
 import { Avatar } from "./avatar";
 import { useControls } from "leva";
 import { PlaneGeometry } from "three/src/Three.js";
+import { Office } from "./Office";
 
 export const Experience = () => {
   const { animation } = useControls({
@@ -18,29 +19,20 @@ export const Experience = () => {
 
   return (
     <>
-      <OrbitControls />
+      {/* <OrbitControls /> */}
       <Sky />
       <Environment preset="sunset" />
-      <group position-y={-1}>
+      <Office />
+      <group position-y={0}>
         <ContactShadows
           opacity={0.5}
-          scale={10}
+          scale={1}
           blur={1}
           far={10}
           resolution={256}
           color="#000000"
         />
         <Avatar animation={animation} />
-        {animation === "Typing" && (
-          <mesh scale={[0.8, 0.5, 0.8]} position-y={0.25}>
-            <boxGeometry />
-            <meshStandardMaterial color="pink" />
-          </mesh>
-        )}
-        <mesh scale={5} rotation-x={-Math.PI * 0.5} position-y={-0.02}>
-          <planeGeometry />
-          <meshStandardMaterial color="lightgreen" />
-        </mesh>
       </group>
     </>
   );
