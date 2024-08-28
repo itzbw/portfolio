@@ -12,7 +12,7 @@ import { Office } from "./Office";
 export const Experience = () => {
   const { animation } = useControls({
     animation: {
-      value: "Typing",
+      value: "Standing",
       options: ["Typing", "Standing", "Falling"],
     },
   });
