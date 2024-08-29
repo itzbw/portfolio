@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, transform } from "framer-motion";
 
 const Section = (props) => {
   const { children } = props;
@@ -48,16 +48,30 @@ const AboutSection = () => {
         <br />
         <span className="bg-white px-1 text-pink-600 italic">Bonnie</span>
       </h1>
-      <p className="text-lg text-gray-600 mt-4">
+      <motion.p
+        className="text-lg text-gray-600 mt-4"
+        initial={{ opacity: 0, y: 25 }}
+        whileInView={{
+          opacity: 1,
+          y: 0,
+          transition: { duration: 1, delay: 1.5 },
+        }}
+      >
         I'm a creative developer
         <br />
         learning to build 3D websites
-      </p>
-      <button
+      </motion.p>
+      <motion.button
         className={`bg-indigo-600 text-white py-4 px-8 rounded-lg font-bold text-lg mt-16`}
+        initial={{ opacity: 0, y: 25 }}
+        whileInView={{
+          opacity: 1,
+          y: 0,
+          transition: { duration: 1, delay: 2 },
+        }}
       >
         Contact Me
-      </button>
+      </motion.button>
     </Section>
   );
 };
@@ -111,43 +125,75 @@ const languages = [
 const SkillSection = () => {
   return (
     <Section>
-      <div>
+      <motion.div whileInView={"visible"}>
         <h2 className="text-4xl font-bold">Skills</h2>
         <div className="mt-8 space-y-4">
           {skills.map((skill, index) => (
             <div className="w-64" key={index}>
-              <h3 className="text-2xl font-bold text-grey-800">
+              <motion.h3
+                className="text-2xl font-bold text-grey-800"
+                initial={{ opacity: 0 }}
+                variants={{
+                  visible: {
+                    opacity: 1,
+                    transition: { duration: 1, delay: 1 + index * 0.2 },
+                  },
+                }}
+              >
                 {skill.title}
-              </h3>
+              </motion.h3>
               <div className="h-2 w-full bg-gray-200 rounded-full mt-2">
-                <div
+                <motion.div
                   className="h-full bg-indigo-500 rounded-full"
                   style={{ width: `${skill.level}%` }}
+                  initial={{ scaleX: 0, originX: 0 }}
+                  variants={{
+                    visible: {
+                      scaleX: 1,
+                      transition: { duration: 1, delay: 1 + index * 0.2 },
+                    },
+                  }}
                 />
               </div>
             </div>
           ))}
         </div>
-      </div>
+      </motion.div>
       <br />
-      <div>
+      <motion.div whileInView={"visible"}>
         <h2 className="text-4xl font-bold">Languages</h2>
         <div className="mt-8 space-y-4">
           {languages.map((languages, index) => (
             <div className="w-64" key={index}>
-              <h3 className="text-2xl font-bold text-grey-800">
+              <motion.h3
+                className="text-2xl font-bold text-grey-800"
+                initial={{ opacity: 0 }}
+                variants={{
+                  visible: {
+                    opacity: 1,
+                    transition: { duration: 1, delay: 1 + index * 0.2 },
+                  },
+                }}
+              >
                 {languages.title}
-              </h3>
+              </motion.h3>
               <div className="h-2 w-full bg-gray-200 rounded-full mt-2">
-                <div
+                <motion.div
                   className="h-full bg-indigo-500 rounded-full"
                   style={{ width: `${languages.level}%` }}
+                  initial={{ scaleX: 0, originX: 0 }}
+                  variants={{
+                    visible: {
+                      scaleX: 1,
+                      transition: { duration: 1, delay: 1 + index * 0.2 },
+                    },
+                  }}
                 />
               </div>
             </div>
           ))}
         </div>
-      </div>
+      </motion.div>
     </Section>
   );
 };
