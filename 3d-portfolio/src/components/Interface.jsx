@@ -44,9 +44,9 @@ const AboutSection = () => {
   return (
     <Section>
       <h1 className="text-6xl font-extrabold leading-snug">
-        Hello I'm
+        Hello
         <br />
-        <span className="bg-white px-1 text-pink-600 italic">Bonnie</span>
+        I'm <span className="bg-white px-1 text-pink-600 italic">Bonnie</span>
       </h1>
       <motion.p
         className="text-lg text-gray-600 mt-4"
@@ -198,7 +198,9 @@ const SkillSection = () => {
   );
 };
 
-const ProjectSection = () => {};
+const ProjectSection = () => {
+  return (<h2 className="text-5xl font-bold">Projects</h2>) 
+};
 
 const ContactSection = () => {
   return (
