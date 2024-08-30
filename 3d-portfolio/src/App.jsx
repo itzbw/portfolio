@@ -7,6 +7,9 @@ import { useEffect, useState } from "react";
 import { Menu } from "./components/Menu";
 import { motion } from "framer-motion-3d";
 import { MotionConfig } from "framer-motion";
+import { Leva } from "leva";
+import { framerMotionConfig } from "./config";
+import { Cursor } from "./components/Cursor";
 
 function App() {
   const [section, setSection] = useState(0);
@@ -21,20 +24,16 @@ function App() {
     <>
       <MotionConfig
         transition={{
-          type: "spring",
-          stiffness: 500,
-          mass: 5,
-          damping: 50,
-          restDelta: 0.0001,
+          ...framerMotionConfig,
         }}
       >
-        <Canvas shadows camera={{ position: [0, 3, 10], fov: 42 }}>
+        <Canvas shadows camera={{ position: [0, 3, 10], fov: 30 }}>
           <color attach="background" args={["#ececec"]} />
 
           <ScrollControls pages={4} damping={0.2}>
             <ScrollManager section={section} onSectionChange={setSection} />
             <Scroll>
-              <Experience section={section} />
+              <Experience section={section} menuOpened={menuOpened} />
             </Scroll>
 
             <Scroll html>
@@ -48,6 +47,8 @@ function App() {
           setMenuOpened={setMenuOpened}
         />
       </MotionConfig>
+      <Cursor />
+      <Leva hidden />
     </>
   );
 }
