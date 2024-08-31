@@ -19,6 +19,7 @@ import { useState, useEffect, useRef } from "react";
 import { framerMotionConfig } from "../config";
 import * as THREE from "three";
 import { Projects } from "./Projects";
+import { Background } from "./Background";
 
 export const Experience = (props) => {
   const { menuOpened } = props;
@@ -77,6 +78,9 @@ export const Experience = (props) => {
 
   return (
     <>
+      <Sky />
+      <Environment preset="sunset" />
+      <Background />
       <motion.group
         position={[1.8, 0.17, 2.4]}
         rotation={[-3.1, 1.3, 3.14]}
@@ -118,9 +122,6 @@ export const Experience = (props) => {
       >
         <Avatar animation={characterAnimation} />
       </motion.group>
-
-      <Sky />
-      <Environment preset="sunset" />
 
       <motion.group
         position={[1.5, 2, 3]}
@@ -182,12 +183,9 @@ export const Experience = (props) => {
             />
           </mesh>
         </Float>
-        {/* <group scale={[1.5, 1.5, 1.5]} position={(1, 0, 0)}>
-          <Avatar animation={section === 1 ? "Falling" : "Standing"} />
-        </group> */}
       </motion.group>
 
-      <Projects section={section} />
+      <Projects />
     </>
   );
 };
