@@ -128,12 +128,12 @@ const languages = [
     level: 100,
   },
   {
-    title: "Simplified Chinese",
-    level: 70,
-  },
-  {
     title: "Japanese",
     level: 80,
+  },
+  {
+    title: "Simplified Chinese",
+    level: 70,
   },
 ];
 
@@ -141,12 +141,14 @@ const SkillSection = () => {
   return (
     <Section>
       <motion.div whileInView={"visible"}>
-        <h2 className="text-4xl font-bold">Skills</h2>
+        <h2 id="skills" className="text-4xl font-bold  text-white">
+          Skills
+        </h2>
         <div className="mt-8 space-y-4">
           {skills.map((skill, index) => (
             <div className="w-64" key={index}>
               <motion.h3
-                className="text-2xl font-bold text-grey-800"
+                className="text-2xl font-bold text-white"
                 initial={{ opacity: 0 }}
                 variants={{
                   visible: {
@@ -159,7 +161,7 @@ const SkillSection = () => {
               </motion.h3>
               <div className="h-2 w-full bg-gray-200 rounded-full mt-2">
                 <motion.div
-                  className="h-full bg-indigo-500 rounded-full"
+                  className="h-full bg-purple-500 rounded-full"
                   style={{ width: `${skill.level}%` }}
                   initial={{ scaleX: 0, originX: 0 }}
                   variants={{
@@ -176,12 +178,14 @@ const SkillSection = () => {
       </motion.div>
       <br />
       <motion.div whileInView={"visible"}>
-        <h2 className="text-4xl font-bold">Languages</h2>
+        <h2 id="skills" className="text-4xl font-bold  text-white">
+          Languages
+        </h2>
         <div className="mt-8 space-y-4">
           {languages.map((languages, index) => (
             <div className="w-64" key={index}>
               <motion.h3
-                className="text-2xl font-bold text-grey-800"
+                className="text-2xl font-bold text-white"
                 initial={{ opacity: 0 }}
                 variants={{
                   visible: {
@@ -194,7 +198,7 @@ const SkillSection = () => {
               </motion.h3>
               <div className="h-2 w-full bg-gray-200 rounded-full mt-2">
                 <motion.div
-                  className="h-full bg-indigo-500 rounded-full"
+                  className="h-full bg-purple-500 rounded-full"
                   style={{ width: `${languages.level}%` }}
                   initial={{ scaleX: 0, originX: 0 }}
                   variants={{
@@ -225,16 +229,16 @@ const ProjectSection = () => {
   };
   return (
     <Section>
-      <div className="flex w-full h-full gap-8 items-center justify-center">
+      <div className="flex w-full h-full gap-8 items-center justify-center text-white">
         <button
           className="hover:text-indigo-600 transition-colors"
           onClick={previousProject}
         >
           ← Previous
         </button>
-        <h2 className="text-5xl font-bold">Projects</h2>
+        <h2 id="projects" className="text-5xl font-bold text-white">Projects</h2>
         <button
-          className="hover:text-indigo-600 transition-colors"
+          className="hover:text-indigo-600 transition-colors text-white"
           onClick={nextProject}
         >
           Next →
@@ -247,7 +251,7 @@ const ProjectSection = () => {
 const ContactSection = () => {
   return (
     <Section>
-      <h2 className="text-5xl font-bold">Contact ME</h2>
+      <h2 id="contact" className="text-5xl font-bold">Contact ME</h2>
       <div className="mt-8 p-8 rounded-md bg-white w-96 max-w-full">
         <form>
           <label htmlFor="name" className="font-medium text-gray-600 mb-1">

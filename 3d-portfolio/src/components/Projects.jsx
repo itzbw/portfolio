@@ -43,12 +43,12 @@ const Project = (props) => {
   return (
     <group {...props}>
       <mesh
-        position-z={-0.002}
+        position-z={-0.01}
         onClick={() => window.open(project.url, "_blank")}
         ref={background}
       >
         <planeGeometry args={[2.2, 2]} />
-        <meshBasicMaterial color="black" transparent opacity={0.4} />
+        <meshBasicMaterial color="grey" transparent opacity={0.8} />
       </mesh>
       <Image
         scale={[2, 1.2, 1]}

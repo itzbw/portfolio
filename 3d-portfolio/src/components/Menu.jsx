@@ -4,7 +4,7 @@ export const Menu = (props) => {
     <>
       <button
         onClick={() => setMenuOpened(!menuOpened)}
-        className="z-20 fixed top-12 right-12 p-3 bg-purple-600 w-11 h-11 rounded-md"
+        className="z-20 fixed top-12 right-12 p-3 bg-purple-900 w-11 h-11 rounded-md"
       >
         <div
           className={`bg-white h-0.5 rounded-md w-full transition-all ${
@@ -42,7 +42,7 @@ const MenuButton = (props) => {
   return (
     <button
       onClick={onClick}
-      className="text-2xl font-bold cursor-pointer hover:text-purple-600 transition-colors"
+      className="text-2xl font-bold cursor-pointer hover:text-purple-900 transition-colors"
     >
       {label}
     </button>

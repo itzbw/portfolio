@@ -27,7 +27,7 @@ function App() {
           ...framerMotionConfig,
         }}
       >
-        <Canvas shadows camera={{ position: [0, 10, 50], fov: 10 }}>
+        <Canvas shadows camera={{ position: [0, 10, 60], fov: 10 }}>
           <color attach="background" args={["#000000"]} />
 
           <ScrollControls pages={4} damping={0.1}>

@@ -50,7 +50,7 @@ export const Experience = (props) => {
     setCharacterAnimation("Falling");
     setTimeout(() => {
       setCharacterAnimation(section === 0 ? "Sitting" : "Standing");
-    }, 100);
+    }, 600);
   }, [section]);
 
   useFrame((state) => {
@@ -83,7 +83,7 @@ export const Experience = (props) => {
     <>
       {/* <Sky /> */}
       {/* <OrbitControls /> */}
-      <Environment files="public/textures/cyberpunk-neon-city-night-futuristic-city-scene-style-pixel-art-80-s-wallpaper-retro-future-generati.hdr" />
+      <Environment files="/textures/cyberpunk-neon-city-night-futuristic-city-scene-style-pixel-art-80-s-wallpaper-retro-future.jpg" />
       <ambientLight intensity={1} color={0xffffff} />
       <directionalLight
         intensity={0.5}
@@ -96,10 +96,11 @@ export const Experience = (props) => {
         color={0x9370db}
       />
       <directionalLight
-        intensity={1}
+        intensity={0.5}
         position={[-30, 30, 30]}
         color={0xffffff}
       />
+      <directionalLight intensity={2} position={[0, 0, 10]} color={0xffffff} />
       <EffectComposer>
         <Bloom
           kernelSize={1}
@@ -124,40 +125,46 @@ export const Experience = (props) => {
         }}
         variants={{
           0: {
-            y: 0,
-            x: 1,
-            z: 13,
+            y: -0.2,
+            x: 0.5,
+            z: 14.5,
             scaleX: 1.5,
             scaleY: 1.5,
             scaleZ: 1.5,
             rotateY: Math.PI,
           },
           1: {
-            y: -viewport.height + 1,
+            y: -viewport.height - 2.8,
             x: 0,
-            z: 15,
+            z: 10,
+            rotateX: 0,
+            rotateY: 0,
+            rotateZ: 0,
+            scaleX: 3,
+            scaleY: 3,
+            scaleZ: 3,
+          },
+          2: {
+            x: -3,
+            y: -viewport.height * 2 + 0.5,
+            z: 5,
+            rotateX: 0,
+            rotateY: Math.PI / 2,
+            rotateZ: 0,
+            scaleX: 2,
+            scaleY: 2,
+            scaleZ: 2,
+          },
+          3: {
+            y: -viewport.height * 3 + 1,
+            x: 2,
+            z: 25,
             rotateX: 0,
             rotateY: 0,
             rotateZ: 0,
             scaleX: 2,
             scaleY: 2,
             scaleZ: 2,
-          },
-          2: {
-            x: -2,
-            y: -viewport.height * 2 + 0.5,
-            z: 0,
-            rotateX: 0,
-            rotateY: Math.PI / 2,
-            rotateZ: 0,
-          },
-          3: {
-            y: -viewport.height * 3 + 1,
-            x: 0.3,
-            z: 8.5,
-            rotateX: 0,
-            rotateY: 0,
-            rotateZ: 0,
           },
         }}
       >
@@ -166,7 +173,7 @@ export const Experience = (props) => {
 
       <motion.group
         position={[1.5, 2, 3]}
-        scale={[0.8, 0.8, 0.8]}
+        scale={[1, 1, 1]}
         rotation-y={-Math.PI / 4}
         animate={{ y: section === 0 ? 0 : -1 }}
       >
