@@ -27,8 +27,8 @@ function App() {
           ...framerMotionConfig,
         }}
       >
-        <Canvas shadows camera={{ position: [0, 3, 10], fov: 42 }}>
-          <color attach="background" args={["#ececec"]} />
+        <Canvas shadows camera={{ position: [0, 10, 50], fov: 10 }}>
+          <color attach="background" args={["#000000"]} />
 
           <ScrollControls pages={4} damping={0.1}>
             <ScrollManager section={section} onSectionChange={setSection} />
@@ -46,7 +46,7 @@ function App() {
           menuOpened={menuOpened}
           setMenuOpened={setMenuOpened}
         />
-        <Cursor />
+        {/* <Cursor /> */}
       </MotionConfig>
 
       <Leva hidden />

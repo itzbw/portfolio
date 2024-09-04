@@ -13,7 +13,7 @@ export const Background = () => {
   const timeline = useRef();
 
   useFrame(() => {
-    timeline.current.progress(data.scroll.current);
+    // timeline.current.progress(data.scroll.current);
 
     material.current.color = new THREE.Color(color.current.color);
   });

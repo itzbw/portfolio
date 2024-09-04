@@ -20,6 +20,9 @@ import { framerMotionConfig } from "../config";
 import * as THREE from "three";
 import { Projects } from "./Projects";
 import { Background } from "./Background";
+import { Punk } from "./Punk";
+import { Bloom, EffectComposer } from "@react-three/postprocessing";
+import { BlurPass, Resizer, KernelSize, Resolution } from "postprocessing";
 
 export const Experience = (props) => {
   const { menuOpened } = props;
@@ -42,12 +45,12 @@ export const Experience = (props) => {
 
   const characterContainerAboutRef = useRef();
 
-  const [characterAnimation, setCharacterAnimation] = useState("Typing");
+  const [characterAnimation, setCharacterAnimation] = useState("Sitting");
   useEffect(() => {
     setCharacterAnimation("Falling");
     setTimeout(() => {
-      setCharacterAnimation(section === 0 ? "Typing" : "Standing");
-    }, 600);
+      setCharacterAnimation(section === 0 ? "Sitting" : "Standing");
+    }, 100);
   }, [section]);
 
   useFrame((state) => {
@@ -78,9 +81,40 @@ export const Experience = (props) => {
 
   return (
     <>
-      <Sky />
-      <Environment preset="sunset" />
-      <Background />
+      {/* <Sky /> */}
+      {/* <OrbitControls /> */}
+      <Environment files="public/textures/cyberpunk-neon-city-night-futuristic-city-scene-style-pixel-art-80-s-wallpaper-retro-future-generati.hdr" />
+      <ambientLight intensity={1} color={0xffffff} />
+      <directionalLight
+        intensity={0.5}
+        position={[1, 10, 1]}
+        color={0xfd6c9e}
+      />
+      <directionalLight
+        intensity={0.5}
+        position={[10, 20, 1]}
+        color={0x9370db}
+      />
+      <directionalLight
+        intensity={1}
+        position={[-30, 30, 30]}
+        color={0xffffff}
+      />
+      <EffectComposer>
+        <Bloom
+          kernelSize={1}
+          luminanceThreshold={0}
+          luminanceSmoothing={0.4}
+          intensity={0.1}
+        />
+        <Bloom
+          kernelSize={KernelSize.HUGE}
+          luminanceThreshold={0}
+          luminanceSmoothing={0}
+          intensity={0.1}
+        />
+      </EffectComposer>
+      {/* <Background /> */}
       <motion.group
         position={[1.8, 0.17, 2.4]}
         rotation={[-3.1, 1.3, 3.14]}
@@ -90,17 +124,24 @@ export const Experience = (props) => {
         }}
         variants={{
           0: {
-            scaleX: 0.9,
-            scaleY: 0.9,
-            scaleZ: 0.9,
+            y: 0,
+            x: 1,
+            z: 13,
+            scaleX: 1.5,
+            scaleY: 1.5,
+            scaleZ: 1.5,
+            rotateY: Math.PI,
           },
           1: {
-            y: -viewport.height + 0.5,
+            y: -viewport.height + 1,
             x: 0,
-            z: 7,
+            z: 15,
             rotateX: 0,
             rotateY: 0,
             rotateZ: 0,
+            scaleX: 2,
+            scaleY: 2,
+            scaleZ: 2,
           },
           2: {
             x: -2,
@@ -129,7 +170,8 @@ export const Experience = (props) => {
         rotation-y={-Math.PI / 4}
         animate={{ y: section === 0 ? 0 : -1 }}
       >
-        <Office section={section} />
+        {/* <Office section={section} /> */}
+        <Punk />
 
         <group
           ref={characterContainerAboutRef}
@@ -147,7 +189,7 @@ export const Experience = (props) => {
         }}
       >
         <directionalLight position={[-5, 3, 5]} intensity={0.4} />
-        <Float>
+        {/* <Float>
           <mesh position={[1, -3, -15]} scale={[2, 2, 2]}>
             <sphereGeometry />
             <MeshDistortMaterial
@@ -182,7 +224,7 @@ export const Experience = (props) => {
               color={"blue"}
             />
           </mesh>
-        </Float>
+        </Float> */}
       </motion.group>
 
       <Projects />

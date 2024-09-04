@@ -37,15 +37,19 @@ export const Interface = (props) => {
 
 const AboutSection = (props) => {
   const { setSection } = props;
+  const url = "https://github.com/itzbw";
   return (
     <Section>
-      <h1 className="text-6xl font-extrabold leading-snug">
+      <h1 className="text-6xl  text-white font-extrabold leading-snug">
         Hello
         <br />
-        I'm <span className="bg-white px-1 text-pink-600 italic">Bonnie</span>
+        I'm{" "}
+        <span id="myname" className=" px-1 text-white italic">
+          Bonnie
+        </span>
       </h1>
       <motion.p
-        className="text-lg text-gray-600 mt-4"
+        className="text-lg text-white mt-4"
         initial={{ opacity: 0, y: 25 }}
         whileInView={{
           opacity: 1,
@@ -59,7 +63,7 @@ const AboutSection = (props) => {
       </motion.p>
       <motion.button
         onClick={() => setSection(3)}
-        className={`bg-indigo-600 text-white py-4 px-8 rounded-lg font-bold text-lg mt-16`}
+        className={`bg-purple-900 text-white py-2 px-4 rounded-lg font-bold text-lg mt-8`}
         initial={{ opacity: 0, y: 25 }}
         whileInView={{
           opacity: 1,
@@ -68,6 +72,20 @@ const AboutSection = (props) => {
         }}
       >
         Contact Me
+      </motion.button>
+      <motion.button
+        onClick={() => {
+          window.open(url, "_blank");
+        }}
+        className={`bg-purple-900 text-white py-2 px-4 rounded-lg font-bold text-lg mt-8`}
+        initial={{ opacity: 0, y: 25 }}
+        whileInView={{
+          opacity: 1,
+          y: 0,
+          transition: { duration: 1, delay: 2 },
+        }}
+      >
+        Github
       </motion.button>
     </Section>
   );
@@ -102,6 +120,10 @@ const languages = [
     level: 90,
   },
   {
+    title: "French",
+    level: 70,
+  },
+  {
     title: "Trditional Chinese",
     level: 100,
   },
@@ -111,11 +133,7 @@ const languages = [
   },
   {
     title: "Japanese",
-    level: 70,
-  },
-  {
-    title: "Frecnh",
-    level: 60,
+    level: 80,
   },
 ];
 
@@ -265,7 +283,7 @@ const ContactSection = () => {
             className="w-full p-2 border border-gray-300 rounded-md mb-4 h-32"
           ></textarea>
           <button
-            className="bg-indigo-600 text-white py-2 px-4 rounded-md font-bold"
+            className="bg-purple-900 text-white py-2 px-4 rounded-md font-bold"
             type="submit"
           >
             Send

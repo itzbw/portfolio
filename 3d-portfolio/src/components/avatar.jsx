@@ -22,13 +22,20 @@ export function Avatar(props) {
   const { animations: fallingAnimations } = useFBX(
     "/animations/Fall_A_Loop.fbx"
   );
+  const { animations: sittingAnimations } = useFBX("/animations/Sitting.fbx");
 
   typingAnimations[0].name = "Typing";
   standingAnimations[0].name = "Standing";
   fallingAnimations[0].name = "Falling";
+  sittingAnimations[0].name = "Sitting";
 
   const { actions } = useAnimations(
-    [typingAnimations[0], standingAnimations[0], fallingAnimations[0]],
+    [
+      typingAnimations[0],
+      standingAnimations[0],
+      fallingAnimations[0],
+      sittingAnimations[0],
+    ],
     group
   );
 
