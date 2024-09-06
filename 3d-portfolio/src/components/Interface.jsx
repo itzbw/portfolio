@@ -45,7 +45,7 @@ const AboutSection = (props) => {
         <br />
         I'm{" "}
         <span id="myname" className=" px-1 text-white italic">
-          Bonnie
+          bonnie
         </span>
       </h1>
       <motion.p
@@ -141,14 +141,14 @@ const SkillSection = () => {
   return (
     <Section>
       <motion.div whileInView={"visible"}>
-        <h2 id="skills" className="text-4xl font-bold  text-white">
+        <h2 id="skills" className="text-3xl font-bold  text-white">
           Skills
         </h2>
-        <div className="mt-8 space-y-4">
+        <div className="mt-6 space-y-2">
           {skills.map((skill, index) => (
             <div className="w-64" key={index}>
               <motion.h3
-                className="text-2xl font-bold text-white"
+                className="text-xl font-bold text-white"
                 initial={{ opacity: 0 }}
                 variants={{
                   visible: {
@@ -159,7 +159,7 @@ const SkillSection = () => {
               >
                 {skill.title}
               </motion.h3>
-              <div className="h-2 w-full bg-gray-200 rounded-full mt-2">
+              <div className="h-2 w-full bg-gray-200 rounded-full mt-1">
                 <motion.div
                   className="h-full bg-purple-500 rounded-full"
                   style={{ width: `${skill.level}%` }}
@@ -178,14 +178,14 @@ const SkillSection = () => {
       </motion.div>
       <br />
       <motion.div whileInView={"visible"}>
-        <h2 id="skills" className="text-4xl font-bold  text-white">
+        <h2 id="skills" className="text-3xl font-bold text-white mt-8">
           Languages
         </h2>
-        <div className="mt-8 space-y-4">
+        <div className="mt-8 space-y-2">
           {languages.map((languages, index) => (
             <div className="w-64" key={index}>
               <motion.h3
-                className="text-2xl font-bold text-white"
+                className="text-xl font-bold text-white"
                 initial={{ opacity: 0 }}
                 variants={{
                   visible: {
@@ -236,7 +236,9 @@ const ProjectSection = () => {
         >
           ← Previous
         </button>
-        <h2 id="projects" className="text-5xl font-bold text-white">Projects</h2>
+        <h2 id="projects" className="text-3xl font-bold text-white">
+          Projects
+        </h2>
         <button
           className="hover:text-indigo-600 transition-colors text-white"
           onClick={nextProject}
@@ -251,7 +253,9 @@ const ProjectSection = () => {
 const ContactSection = () => {
   return (
     <Section>
-      <h2 id="contact" className="text-5xl font-bold">Contact ME</h2>
+      <h2 id="contact" className="text-5xl font-bold">
+        Contact ME
+      </h2>
       <div className="mt-8 p-8 rounded-md bg-white w-96 max-w-full">
         <form>
           <label htmlFor="name" className="font-medium text-gray-600 mb-1">
