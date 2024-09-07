@@ -82,7 +82,7 @@ const Project = (props) => {
   );
 };
 
-export const currentProjectAtom = atom(Math.floor(projects.length / 2));
+export const currentProjectAtom = atom(0);
 
 export const Projects = () => {
   const { viewport } = useThree();

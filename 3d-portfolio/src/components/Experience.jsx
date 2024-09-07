@@ -49,7 +49,14 @@ export const Experience = (props) => {
   useEffect(() => {
     setCharacterAnimation("Falling");
     setTimeout(() => {
-      setCharacterAnimation(section === 0 ? "Sitting" : "Standing");
+      setCharacterAnimation(
+        {
+          0: "Sitting",
+          1: "Standing",
+          2: "Thinking",
+          3: "Talking On Phone",
+        }[section]
+      );
     }, 600);
   }, [section]);
 

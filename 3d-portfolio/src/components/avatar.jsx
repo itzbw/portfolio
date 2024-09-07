@@ -23,11 +23,17 @@ export function Avatar(props) {
     "/animations/Fall_A_Loop.fbx"
   );
   const { animations: sittingAnimations } = useFBX("/animations/Sitting.fbx");
+  const { animations: thinkingAnimations } = useFBX("/animations/Thinking.fbx");
+  const { animations: talkingOnPhoneAnimation } = useFBX(
+    "/animations/Talking On Phone.fbx"
+  );
 
   typingAnimations[0].name = "Typing";
   standingAnimations[0].name = "Standing";
   fallingAnimations[0].name = "Falling";
   sittingAnimations[0].name = "Sitting";
+  thinkingAnimations[0].name = "Thinking";
+  talkingOnPhoneAnimation[0].name = "Talking On Phone";
 
   const { actions } = useAnimations(
     [
@@ -35,6 +41,8 @@ export function Avatar(props) {
       standingAnimations[0],
       fallingAnimations[0],
       sittingAnimations[0],
+      thinkingAnimations[0],
+      talkingOnPhoneAnimation[0],
     ],
     group
   );
