@@ -81,7 +81,6 @@ export const Experience = (props) => {
 
   return (
     <>
-      {/* <Sky /> */}
       {/* <OrbitControls /> */}
       <Environment files="/textures/cyberpunk-neon-city-night-futuristic-city-scene-style-pixel-art-80-s-wallpaper-retro-future.jpg" />
       <ambientLight intensity={1} color={0xffffff} />
@@ -101,7 +100,7 @@ export const Experience = (props) => {
         color={0xffffff}
       />
       <directionalLight intensity={2} position={[0, 0, 10]} color={0xffffff} />
-      <EffectComposer>
+      {/* <EffectComposer>
         <Bloom
           kernelSize={1}
           luminanceThreshold={0}
@@ -114,7 +113,7 @@ export const Experience = (props) => {
           luminanceSmoothing={0}
           intensity={0.1}
         />
-      </EffectComposer>
+      </EffectComposer> */}
       {/* <Background /> */}
       <motion.group
         position={[1.8, 0.17, 2.4]}

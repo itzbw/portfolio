@@ -56,13 +56,14 @@ const AboutSection = (props) => {
           transition: { duration: 1, delay: 1.5 },
         }}
       >
-        I'm a creative developer
+        I'm a developer based in Paris 🗼
+        <br />I enjoy building 3D games and designing
         <br />
-        learning to build 3D websites
+        fullstack applications with React and Node.js
       </motion.p>
       <motion.button
         onClick={() => setSection(3)}
-        className={`bg-purple-900 text-white py-2 px-4 rounded-lg font-bold text-lg mt-8`}
+        className={`bg-white text-black py-2 px-4 rounded-lg font-bold text-lg mt-8`}
         initial={{ opacity: 0, y: 25 }}
         whileInView={{
           opacity: 1,
@@ -79,15 +80,15 @@ const AboutSection = (props) => {
 const skills = [
   {
     title: "Three.js",
-    level: 60,
+    level: 50,
   },
   {
-    title: "Vanilla JS",
+    title: "JS",
     level: 60,
   },
   {
     title: "Docker",
-    level: 60,
+    level: 30,
   },
   {
     title: "C",
@@ -109,7 +110,7 @@ const languages = [
     level: 70,
   },
   {
-    title: "Trditional Chinese",
+    title: "Traditional Chinese",
     level: 100,
   },
   {
@@ -118,84 +119,79 @@ const languages = [
   },
   {
     title: "Simplified Chinese",
-    level: 70,
+    level: 50,
   },
 ];
+
+const SkillList = (props) =>
+  props.items.map((skill, index) => (
+    <div className="w-64" key={index}>
+      <motion.h3
+        className="text-xl font-bold text-white"
+        initial={{ opacity: 0 }}
+        variants={{
+          visible: {
+            opacity: 1,
+            transition: { duration: 1, delay: 1 + index * 0.2 },
+          },
+        }}
+      >
+        {skill.title}
+      </motion.h3>
+      <div className="h-2 w-full rounded-full mt-1">
+        <motion.div
+          className="h-full bg-gray-300 rounded-full"
+          style={{ width: `${skill.level}%` }}
+          initial={{ scaleX: 0, originX: 0 }}
+          variants={{
+            visible: {
+              scaleX: 1,
+              transition: { duration: 1, delay: 1 + index * 0.2 },
+            },
+          }}
+        />
+      </div>
+    </div>
+  ));
 
 const SkillSection = () => {
   return (
     <Section>
       <motion.div whileInView={"visible"}>
-        <h2 id="skills" className="text-3xl font-bold  text-white">
+        <motion.h2
+          whileInView={"visible"}
+          initial={{ opacity: 0 }}
+          variants={{
+            visible: {
+              opacity: 1,
+              transition: { duration: 1, delay: 1 },
+            },
+          }}
+          className="bright-gradient text-5xl h-14 font-bold text-white"
+        >
           Skills
-        </h2>
+        </motion.h2>
         <div className="mt-6 space-y-2">
-          {skills.map((skill, index) => (
-            <div className="w-64" key={index}>
-              <motion.h3
-                className="text-xl font-bold text-white"
-                initial={{ opacity: 0 }}
-                variants={{
-                  visible: {
-                    opacity: 1,
-                    transition: { duration: 1, delay: 1 + index * 0.2 },
-                  },
-                }}
-              >
-                {skill.title}
-              </motion.h3>
-              <div className="h-2 w-full bg-gray-200 rounded-full mt-1">
-                <motion.div
-                  className="h-full bg-purple-500 rounded-full"
-                  style={{ width: `${skill.level}%` }}
-                  initial={{ scaleX: 0, originX: 0 }}
-                  variants={{
-                    visible: {
-                      scaleX: 1,
-                      transition: { duration: 1, delay: 1 + index * 0.2 },
-                    },
-                  }}
-                />
-              </div>
-            </div>
-          ))}
+          <SkillList items={skills} />
         </div>
       </motion.div>
       <br />
       <motion.div whileInView={"visible"}>
-        <h2 id="skills" className="text-3xl font-bold text-white mt-8">
+        <motion.h2
+          whileInView={"visible"}
+          initial={{ opacity: 0 }}
+          variants={{
+            visible: {
+              opacity: 1,
+              transition: { duration: 1, delay: 1.5 },
+            },
+          }}
+          className="bright-gradient text-5xl h-14 font-bold text-white mt-8"
+        >
           Languages
-        </h2>
+        </motion.h2>
         <div className="mt-8 space-y-2">
-          {languages.map((languages, index) => (
-            <div className="w-64" key={index}>
-              <motion.h3
-                className="text-xl font-bold text-white"
-                initial={{ opacity: 0 }}
-                variants={{
-                  visible: {
-                    opacity: 1,
-                    transition: { duration: 1, delay: 1 + index * 0.2 },
-                  },
-                }}
-              >
-                {languages.title}
-              </motion.h3>
-              <div className="h-2 w-full bg-gray-200 rounded-full mt-2">
-                <motion.div
-                  className="h-full bg-purple-500 rounded-full"
-                  style={{ width: `${languages.level}%` }}
-                  initial={{ scaleX: 0, originX: 0 }}
-                  variants={{
-                    visible: {
-                      scaleX: 1,
-                      transition: { duration: 1, delay: 1 + index * 0.2 },
-                    },
-                  }}
-                />
-              </div>
-            </div>
-          ))}
+          <SkillList items={languages} />
         </div>
       </motion.div>
     </Section>
@@ -214,22 +210,22 @@ const ProjectSection = () => {
   };
   return (
     <Section>
-      <div className="flex w-full h-full gap-8 items-center justify-center text-white">
-        <button
-          className="hover:text-indigo-600 transition-colors"
-          onClick={previousProject}
-        >
-          ← Previous
-        </button>
-        <h2 id="projects" className="text-3xl font-bold text-white">
-          Projects
-        </h2>
-        <button
-          className="hover:text-indigo-600 transition-colors text-white"
-          onClick={nextProject}
-        >
-          Next →
-        </button>
+      <div className="w-full h-full gap-8 items-center justify-center text-white">
+        <h2 className="bright-gradient text-6xl h-20 font-bold">Projects</h2>
+        <div className="flex w-full h-full gap-8 items-center justify-center text-white">
+          <button
+            className="hover:text-indigo-600 transition-colors text-2xl"
+            onClick={previousProject}
+          >
+            ← Previous
+          </button>
+          <button
+            className="hover:text-indigo-600 transition-colors text-2xl"
+            onClick={nextProject}
+          >
+            Next →
+          </button>
+        </div>
       </div>
     </Section>
   );
@@ -239,17 +235,20 @@ const ContactSection = () => {
   const url = "https://github.com/itzbw";
   return (
     <Section className="contact">
-      <h2 id="contact" className="text-5xl font-bold">
-        Contact Me
-      </h2>
+      <h2 className="accent-gradient text-9xl font-bold">Contact Me</h2>
       <br />
-      <p className="text-white align-top italic"> Email: thebw.42 @ pm.me</p>
+      <a
+        className="text-white align-top text-5xl font-bold"
+        href="mailto:bobo@thebw.dev"
+      >
+        bobo@thebw.dev
+      </a>
 
       <button
         onClick={() => {
           window.open(url, "_blank");
         }}
-        className={`bg-purple-900 text-white py-2 px-4 rounded-lg font-bold text-lg mt-8`}
+        className={`bg-white text-black py-2 px-4 rounded-lg font-bold text-lg mt-8`}
       >
         Github
       </button>
