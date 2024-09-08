@@ -106,7 +106,7 @@ export const Experience = (props) => {
         position={[-30, 30, 30]}
         color={0xffffff}
       />
-      <directionalLight intensity={2} position={[0, 0, 10]} color={0xffffff} />
+      <directionalLight intensity={1.5} position={[0, 0, 10]} color={0xffffff} />
       {/* <EffectComposer>
         <Bloom
           kernelSize={1}
