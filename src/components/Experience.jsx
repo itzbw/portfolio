@@ -91,22 +91,19 @@ export const Experience = (props) => {
       {/* <OrbitControls /> */}
       <Environment files="/textures/cyberpunk-neon-city-night-futuristic-city-scene-style-pixel-art-80-s-wallpaper-retro-future.jpg" />
       <ambientLight intensity={1} color={0xffffff} />
+      <directionalLight intensity={5} position={[1, 10, 1]} color={0xfd6c9e} />
+      <directionalLight intensity={5} position={[10, 20, 1]} color={0x9370db} />
       <directionalLight
-        intensity={0.5}
-        position={[1, 10, 1]}
-        color={0xfd6c9e}
-      />
-      <directionalLight
-        intensity={0.5}
-        position={[10, 20, 1]}
-        color={0x9370db}
-      />
-      <directionalLight
-        intensity={0.5}
+        intensity={1}
         position={[-30, 30, 30]}
         color={0xffffff}
       />
-      <directionalLight intensity={1.5} position={[0, 0, 10]} color={0xffffff} />
+      <directionalLight
+        intensity={1}
+        position={[-10, -10, -10]}
+        color={0xffffff}
+      />
+
       {/* <EffectComposer>
         <Bloom
           kernelSize={1}

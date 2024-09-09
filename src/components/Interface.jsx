@@ -235,10 +235,13 @@ const ContactSection = () => {
   const url = "https://github.com/itzbw";
   return (
     <Section className="contact">
-      <h2 className="accent-gradient text-9xl font-bold">Contact Me</h2>
+      <h2 id="contatc-me" className="accent-gradient text-9xl font-bold ">
+        Contact Me
+      </h2>
       <br />
+
       <a
-        className="text-white align-top text-5xl font-bold"
+        className="text-white align-top text-4xl font-bold"
         href="mailto:bobo@thebw.dev"
       >
         bobo@thebw.dev

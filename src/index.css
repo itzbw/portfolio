@@ -51,6 +51,7 @@ body {
 }
 
 .accent-gradient {
+  font-size: clamp(5rem, 5vw, 10vh);
   background: linear-gradient(
     to right,
     #7953cd 20%,
