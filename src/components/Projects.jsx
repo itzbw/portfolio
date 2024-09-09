@@ -20,7 +20,7 @@ export const projects = [
   },
   {
     title: "42",
-    image: "/projects/42.png",
+    image: "/projects/42.jpg",
     url: "https://github.com/itzbw/42",
     description: "My 42 Cursus projects",
   },

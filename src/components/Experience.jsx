@@ -1,28 +1,15 @@
-import {
-  Environment,
-  OrbitControls,
-  Sky,
-  ContactShadows,
-  Float,
-  MeshDistortMaterial,
-  MeshWobbleMaterial,
-  useScroll,
-} from "@react-three/drei";
+import { Environment, useScroll } from "@react-three/drei";
 import { Avatar } from "./avatar";
-import { useControls } from "leva";
-import { PlaneGeometry } from "three/src/Three.js";
-import { Office } from "./Office";
+
 import { motion } from "framer-motion-3d";
 import { useFrame, useThree } from "@react-three/fiber";
 import { animate, useMotionValue } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
 import { framerMotionConfig } from "../config";
-import * as THREE from "three";
+
 import { Projects } from "./Projects";
-import { Background } from "./Background";
+
 import { Punk } from "./Punk";
-import { Bloom, EffectComposer } from "@react-three/postprocessing";
-import { BlurPass, Resizer, KernelSize, Resolution } from "postprocessing";
 
 export const Experience = (props) => {
   const { menuOpened } = props;
@@ -89,7 +76,7 @@ export const Experience = (props) => {
   return (
     <>
       {/* <OrbitControls /> */}
-      <Environment files="/textures/cyberpunk-neon-city-night-futuristic-city-scene-style-pixel-art-80-s-wallpaper-retro-future.jpg" />
+      <Environment files="/textures/cyberpunk-min.jpg" />
       <ambientLight intensity={1} color={0xffffff} />
       <directionalLight intensity={5} position={[1, 10, 1]} color={0xfd6c9e} />
       <directionalLight intensity={5} position={[10, 20, 1]} color={0x9370db} />

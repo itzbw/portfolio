@@ -5,8 +5,7 @@ Command: npx gltfjsx@6.5.0 public/models/punk2.gltf
 
 import React from "react";
 import { useGLTF, useTexture } from "@react-three/drei";
-import * as THREE from "three";
-import { Bloom, EffectComposer } from "@react-three/postprocessing";
+
 
 export function Punk(props) {
   const { nodes, materials } = useGLTF("/models/punkpunk_compressed.glb");

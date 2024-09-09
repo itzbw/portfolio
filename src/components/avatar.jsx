@@ -1,11 +1,10 @@
-// import React, { useRef } from "react";
-// import { useGLTF } from "@react-three/drei";
+
 import { useAnimations, useFBX, useGLTF } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { useControls } from "leva";
 import React, { useEffect, useRef } from "react";
 import * as THREE from "three";
-import { useState } from "react";
+
 
 export function Avatar(props) {
   const { animation } = props;
