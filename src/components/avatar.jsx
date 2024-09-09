@@ -1,10 +1,8 @@
-
 import { useAnimations, useFBX, useGLTF } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { useControls } from "leva";
 import React, { useEffect, useRef } from "react";
 import * as THREE from "three";
-
 
 export function Avatar(props) {
   const { animation } = props;
@@ -14,7 +12,7 @@ export function Avatar(props) {
     wireframe: false,
   });
   const group = useRef();
-  const { nodes, materials } = useGLTF("/models/66cdd039e53f545fdaa1e59f.glb");
+  const { nodes, materials } = useGLTF("/models/avatar.glb");
 
   // const { animations: typingAnimations } = useFBX("/animations/Typing.fbx");
   const { animations: standingAnimations } = useFBX("/animations/Stand.fbx");
@@ -24,8 +22,9 @@ export function Avatar(props) {
   const { animations: sittingAnimations } = useFBX("/animations/Sitting.fbx");
   const { animations: thinkingAnimations } = useFBX("/animations/Thinking.fbx");
   const { animations: talkingOnPhoneAnimation } = useFBX(
-    "/animations/Talking On Phone.fbx"
+    "/animations/OnPhone.fbx"
   );
+  document.dispatchEvent(new Event("animation-loaded"));
 
   // typingAnimations[0].name = "Typing";
   standingAnimations[0].name = "Standing";
@@ -147,4 +146,4 @@ export function Avatar(props) {
   );
 }
 
-useGLTF.preload("/models/66cdd039e53f545fdaa1e59f.glb");
+useGLTF.preload("/models/avatar.glb");
