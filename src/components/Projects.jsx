@@ -7,6 +7,12 @@ import { animate, useMotionValue } from "framer-motion";
 
 export const projects = [
   {
+    title: "42",
+    image: "/projects/42.jpg",
+    url: "https://github.com/itzbw/42",
+    description: "My 42 Cursus projects",
+  },
+  {
     title: "ft_transcendence",
     image: "./projects/transcendence.png",
     url: "https://42.thebw.dev",
@@ -19,10 +25,10 @@ export const projects = [
     description: "Click the guinea pig",
   },
   {
-    title: "42",
-    image: "/projects/42.jpg",
-    url: "https://github.com/itzbw/42",
-    description: "My 42 Cursus projects",
+    title: "Stack on the Box",
+    image: "/projects/stackbox.png",
+    url: "https://stackbox.thebw.dev",
+    description: "Pile them up as high as you can",
   },
 ];
 
