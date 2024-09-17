@@ -203,10 +203,10 @@ const skills = [
   { title: "HTML" },
   { title: "CSS" },
   { title: "JavaScript" },
+  { title: "C" },
   { title: "Three.js" },
   { title: "React" },
   { title: "Node.js" },
-  { title: "C" },
 ];
 
 const languages = [
@@ -267,47 +267,6 @@ const LanguageList = ({ items }) =>
     </div>
   ));
 
-// const SkillSection = () => {
-//   return (
-//     <section>
-//       <motion.div whileInView="visible" className="w-full">
-//         <motion.h2
-//           initial={{ opacity: 0, x: -20 }}
-//           variants={{
-//             visible: {
-//               opacity: 1,
-//               x: 0,
-//               transition: { duration: 1 },
-//             },
-//           }}
-//           className="text-5xl font-bold text-white mb-6 "
-//         >
-//           Skills
-//         </motion.h2>
-//         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10 ">
-//           <SkillList items={skills} />
-//         </div>
-
-//         <motion.h2
-//           initial={{ opacity: 0, x: -20 }}
-//           variants={{
-//             visible: {
-//               opacity: 1,
-//               x: 0,
-//               transition: { duration: 1, delay: 0.5 },
-//             },
-//           }}
-//           className="text-5xl font-bold text-white mb-6 mt-10"
-//         >
-//           Languages
-//         </motion.h2>
-//         <div className="space-y-2">
-//           <LanguageList items={languages} />
-//         </div>
-//       </motion.div>
-//     </section>
-//   );
-// };
 const SkillSection = () => {
   return (
     <Section className="py-10 px-4 sm:px-6 lg:px-8">
