@@ -210,11 +210,11 @@ const skills = [
 ];
 
 const languages = [
-  { title: "English", level: 90 },
+  { title: "English", level: 100 },
   { title: "French", level: 70 },
   { title: "Traditional Chinese", level: 100 },
   { title: "Japanese", level: 80 },
-  { title: "Simplified Chinese", level: 50 },
+  { title: "Simplified Chinese", level: 60 },
 ];
 
 const SkillList = ({ items }) =>
@@ -237,7 +237,7 @@ const SkillList = ({ items }) =>
 
 const LanguageList = ({ items }) =>
   items.map((lang, index) => (
-    <div className="w-full max-w-sm mb-4" key={index}>
+    <div className="w-full max-w-xs mb-4" key={index}>
       <motion.h3
         className="text-xl font-bold text-white"
         initial={{ opacity: 0, x: -20 }}
