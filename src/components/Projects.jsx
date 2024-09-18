@@ -7,7 +7,7 @@ import { animate, useMotionValue } from "framer-motion";
 
 export const projects = [
   {
-    title: "42",
+    title: "42 Projects",
     image: "/projects/42.jpg",
     url: "https://github.com/itzbw/42",
     description: "My 42 Cursus projects",
@@ -49,15 +49,15 @@ const Project = (props) => {
   return (
     <group {...props}>
       <mesh
-        position-z={-0.01}
+        position-z={-0.1}
         onClick={() => window.open(project.url, "_blank")}
         ref={background}
       >
-        <planeGeometry args={[2.2, 2]} />
+        <planeGeometry args={[4.5, 3.5]} />
         <meshBasicMaterial color="grey" transparent opacity={0.8} />
       </mesh>
       <Image
-        scale={[2, 1.2, 1]}
+        scale={[4, 2.5, 2]}
         url={project.image}
         toneMapped={false}
         position-y={0.3}
@@ -65,25 +65,25 @@ const Project = (props) => {
 
       <Text
         // color={"black"}
-        maxWidth={2}
+        maxWidth={4}
         anchorX={"left"}
         anchorY={"top"}
-        fontSize={0.2}
-        position={[-1, -0.4, -0.1]}
+        fontSize={0.3}
+        position={[-2, -1, 0]}
       >
         {project.title.toUpperCase()}
       </Text>
 
-      <Text
-        // color={"black"}
+      {/* <Text
+        color={"black"}
         maxWidth={2}
         anchorX="left"
         anchorY="top"
-        fontSize={0.1}
-        position={[-1, -0.6, 0]}
+        fontSize={0.2}
+        position={[-1, -1, 0]}
       >
         {project.description}
-      </Text>
+      </Text> */}
     </group>
   );
 };
@@ -101,7 +101,7 @@ export const Projects = () => {
           key={"project_" + index}
           position={[index * 2.5, 0, -3]}
           animate={{
-            x: 0 + (index - currentProject) * 2.5,
+            x: 0 + (index - currentProject) * 5,
             y: currentProject === index ? 0 : -0.1,
             z: currentProject === index ? -2 : -3,
             rotateX: currentProject === index ? 0 : -Math.PI / 3,
