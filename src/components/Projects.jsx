@@ -13,9 +13,27 @@ export const projects = [
     description: "My 42 Cursus projects",
   },
   {
+    title: "so_long",
+    image: "/projects/so_long.gif",
+    url: "https://github.com/itzbw/42-so_long",
+    description: "a mini 2D game",
+  },
+  {
+    title: "minishell",
+    image: "/projects/minishell_01.png",
+    url: "https://github.com/itzbw/42-minishell",
+    description: "a simple shell like bash",
+  },
+  {
+    title: "cub3d",
+    image: "/projects/cub3d.gif",
+    url: "https://github.com/itzbw/42-cub3d",
+    description: "a FPS maze game",
+  },
+  {
     title: "ft_transcendence",
     image: "./projects/transcendence.png",
-    url: "https://42.thebw.dev",
+    url: "https://github.com/itzbw/42-ft_transcendence",
     description: "A web-based 3D pong game",
   },
   {
@@ -49,12 +67,12 @@ const Project = (props) => {
   return (
     <group {...props}>
       <mesh
-        position-z={-0.1}
+        position-z={-0.2}
         onClick={() => window.open(project.url, "_blank")}
         ref={background}
       >
         <planeGeometry args={[4.5, 3.5]} />
-        <meshBasicMaterial color="grey" transparent opacity={0.8} />
+        <meshBasicMaterial color="grey" transparent opacity={0.5} />
       </mesh>
       <Image
         scale={[4, 2.5, 2]}
@@ -74,16 +92,16 @@ const Project = (props) => {
         {project.title.toUpperCase()}
       </Text>
 
-      {/* <Text
-        color={"black"}
-        maxWidth={2}
+      <Text
+        color="black"
+        maxWidth={4}
         anchorX="left"
         anchorY="top"
         fontSize={0.2}
-        position={[-1, -1, 0]}
+        position={[-2, -1.4, 0]}
       >
         {project.description}
-      </Text> */}
+      </Text>
     </group>
   );
 };

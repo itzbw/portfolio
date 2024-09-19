@@ -65,27 +65,3 @@ body {
   background-size: 500% auto;
   animation: textShine 5s ease-in-out infinite alternate;
 }
-
-.bright-gradient {
-  /* background: linear-gradient(
-    45deg,
-    hsl(0deg 0% 100%) 0%,
-    hsl(300deg 100% 100%) 8%,
-    hsl(300deg 100% 100%) 16%,
-    hsl(0deg 0% 100%) 24%,
-    hsl(33deg 100% 87%) 32%,
-    hsl(33deg 100% 73%) 40%,
-    hsl(35deg 97% 58%) 47%,
-    hsl(33deg 60% 57%) 55%,
-    hsl(31deg 28% 53%) 63%,
-    hsl(0deg 0% 47%) 71%,
-    hsl(344deg 0% 51%) 81%,
-    hsl(344deg 0% 54%) 90%,
-    hsl(0deg 0% 57%) 100%
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-size: 500% auto;
-  animation: textShine 5s ease-in-out infinite alternate; */
-}
