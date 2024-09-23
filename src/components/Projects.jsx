@@ -48,6 +48,12 @@ export const projects = [
     url: "https://stackbox.thebw.dev",
     description: "Pile them up as high as you can",
   },
+  {
+    title: "toodoo app",
+    image: "/projects/toodoo.png",
+    url: "https://toodoo.thebw.dev",
+    description: "To do or not to do",
+  },
 ];
 
 const Project = (props) => {
