@@ -61,10 +61,11 @@ const AboutSection = (props) => {
         <br />I enjoy building 3D games and designing
         <br />
         fullstack applications with React and Node.js
+        <br />
       </motion.p>
       <motion.button
         onClick={() => setSection(3)}
-        className={`bg-white text-black py-2 px-4 rounded-lg font-bold text-lg mt-8`}
+        className="shiny-cta"
         initial={{ opacity: 0, y: 25 }}
         whileInView={{
           opacity: 1,
