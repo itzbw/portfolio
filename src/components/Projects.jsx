@@ -54,6 +54,12 @@ export const projects = [
     url: "https://toodoo.thebw.dev",
     description: "an todo app using MERN stack",
   },
+  {
+    title: "Google Hackathon 2024",
+    image: "/projects/googlePrize.jpg",
+    url: "https://github.com/itzbw/googleHackathon2024",
+    description: "Google Data Center Hardware Hackathon Paris 2024",
+  },
 ];
 
 const Project = (props) => {
