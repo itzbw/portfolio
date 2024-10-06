@@ -65,7 +65,7 @@ const AboutSection = (props) => {
       </motion.p>
       <motion.button
         onClick={() => setSection(3)}
-        className="shiny-cta"
+        className="shiny-cta mt-8"
         initial={{ opacity: 0, y: 25 }}
         whileInView={{
           opacity: 1,
