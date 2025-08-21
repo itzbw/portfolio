@@ -3,13 +3,14 @@ import { atom, useAtom } from "jotai";
 import { currentProjectAtom, projects } from "./Projects";
 
 const Section = (props) => {
-  const { children } = props;
+  const { children, className } = props;
 
   return (
     <motion.section
       className={`
-    h-screen w-screen p-8 max-w-screen-2xl
+    h-screen w-screen p-4 sm:p-6 lg:p-8 max-w-screen-2xl
     flex flex-col items-start justify-center
+    ${className || ""}
     `}
       initial={{ opacity: 0, y: 50 }}
       whileInView={{
@@ -40,16 +41,16 @@ const AboutSection = (props) => {
 
   return (
     <Section>
-      <h1 className="text-6xl  text-white font-extrabold leading-snug">
+      <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white font-extrabold leading-snug">
         Hello
         <br />
         I'm{" "}
-        <span id="myname" className=" px-1 text-white italic">
+        <span id="myname" className="px-1 text-white italic">
           bonnie
         </span>
       </h1>
       <motion.p
-        className="text-lg text-white mt-4"
+        className="text-sm sm:text-base lg:text-lg text-white mt-4 max-w-lg"
         initial={{ opacity: 0, y: 25 }}
         whileInView={{
           opacity: 1,
@@ -65,7 +66,7 @@ const AboutSection = (props) => {
       </motion.p>
       <motion.button
         onClick={() => setSection(3)}
-        className="shiny-cta mt-8"
+        className="shiny-cta mt-6 sm:mt-8 text-sm sm:text-base lg:text-xl px-4 py-2 sm:px-6 sm:py-3"
         initial={{ opacity: 0, y: 25 }}
         whileInView={{
           opacity: 1,
@@ -78,127 +79,6 @@ const AboutSection = (props) => {
     </Section>
   );
 };
-
-// const skills = [
-//   {
-//     title: "Three.js",
-//     level: 50,
-//   },
-//   {
-//     title: "JS",
-//     level: 60,
-//   },
-//   {
-//     title: "Docker",
-//     level: 30,
-//   },
-//   {
-//     title: "C",
-//     level: 60,
-//   },
-//   {
-//     title: "C++",
-//     level: 40,
-//   },
-// ];
-
-// const languages = [
-//   {
-//     title: "English",
-//     level: 90,
-//   },
-//   {
-//     title: "French",
-//     level: 70,
-//   },
-//   {
-//     title: "Traditional Chinese",
-//     level: 100,
-//   },
-//   {
-//     title: "Japanese",
-//     level: 80,
-//   },
-//   {
-//     title: "Simplified Chinese",
-//     level: 50,
-//   },
-// ];
-
-// const SkillList = (props) =>
-//   props.items.map((skill, index) => (
-//     <div className="w-64" key={index}>
-//       <motion.h3
-//         className="text-xl font-bold text-white"
-//         initial={{ opacity: 0 }}
-//         variants={{
-//           visible: {
-//             opacity: 1,
-//             transition: { duration: 1, delay: 1 + index * 0.2 },
-//           },
-//         }}
-//       >
-//         {skill.title}
-//       </motion.h3>
-//       <div className="h-2 w-full rounded-full mt-1">
-//         <motion.div
-//           className="h-full bg-gray-300 rounded-full"
-//           style={{ width: `${skill.level}%` }}
-//           initial={{ scaleX: 0, originX: 0 }}
-//           variants={{
-//             visible: {
-//               scaleX: 1,
-//               transition: { duration: 1, delay: 1 + index * 0.2 },
-//             },
-//           }}
-//         />
-//       </div>
-//     </div>
-//   ));
-
-// const SkillSection = () => {
-//   return (
-//     <Section>
-//       <motion.div whileInView={"visible"}>
-//         <motion.h2
-//           whileInView={"visible"}
-//           initial={{ opacity: 0 }}
-//           variants={{
-//             visible: {
-//               opacity: 1,
-//               transition: { duration: 1, delay: 1 },
-//             },
-//           }}
-//           className="bright-gradient text-5xl h-14 font-bold text-white"
-//         >
-//           Skills
-//         </motion.h2>
-//         <div className="mt-6 space-y-2">
-//           <SkillList items={skills} />
-//         </div>
-//       </motion.div>
-//       <br />
-//       <motion.div whileInView={"visible"}>
-//         <motion.h2
-//           whileInView={"visible"}
-//           initial={{ opacity: 0 }}
-//           variants={{
-//             visible: {
-//               opacity: 1,
-//               transition: { duration: 1, delay: 1.5 },
-//             },
-//           }}
-//           className="bright-gradient text-5xl h-14 font-bold text-white mt-8"
-//         >
-//           Languages
-//         </motion.h2>
-//         <div className="mt-8 space-y-2">
-//           <SkillList items={languages} />
-//         </div>
-//       </motion.div>
-//     </Section>
-//   );
-// };
 
 const skills = [
   { title: "HTML" },
@@ -222,7 +102,7 @@ const SkillList = ({ items }) =>
   items.map((skill, index) => (
     <motion.div
       key={index}
-      className="text-xl font-bold text-white mb-2 mr-4"
+      className="text-base sm:text-lg lg:text-xl font-bold text-white mb-2 mr-2 sm:mr-4"
       initial={{ opacity: 0, x: -20 }}
       variants={{
         visible: {
@@ -240,7 +120,7 @@ const LanguageList = ({ items }) =>
   items.map((lang, index) => (
     <div className="w-full max-w-xs mb-4" key={index}>
       <motion.h3
-        className="text-xl font-bold text-white"
+        className="text-base sm:text-lg lg:text-xl font-bold text-white"
         initial={{ opacity: 0, x: -20 }}
         variants={{
           visible: {
@@ -270,8 +150,8 @@ const LanguageList = ({ items }) =>
 
 const SkillSection = () => {
   return (
-    <Section className="py-10 px-4 sm:px-6 lg:px-8">
-      <motion.div whileInView="visible" className="w-full max-w-xs">
+    <Section className="py-6 sm:py-10 px-4 sm:px-6 lg:px-8">
+      <motion.div whileInView="visible" className="w-full">
         <motion.h2
           initial={{ opacity: 0, y: 50 }}
           variants={{
@@ -281,11 +161,11 @@ const SkillSection = () => {
               transition: { duration: 1 },
             },
           }}
-          className="text-5xl font-bold text-white mb-6"
+          className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4 sm:mb-6"
         >
           Skills
         </motion.h2>
-        <div className="flex flex-wrap gap-y-2 mb-10 w-full">
+        <div className="flex flex-wrap gap-y-2 mb-6 sm:mb-10 w-full">
           <SkillList items={skills} />
         </div>
 
@@ -298,11 +178,11 @@ const SkillSection = () => {
               transition: { duration: 1, delay: 0.5 },
             },
           }}
-          className="text-5xl font-bold text-white mb-6 mt-10"
+          className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4 sm:mb-6 mt-6 sm:mt-10"
         >
           Languages
         </motion.h2>
-        <div className="space-y-2">
+        <div className="space-y-2 max-w-md">
           <LanguageList items={languages} />
         </div>
       </motion.div>
@@ -320,19 +200,22 @@ const ProjectSection = () => {
   const previousProject = () => {
     setCurrentProject((currentProject - 1 + projects.length) % projects.length);
   };
+
   return (
     <Section>
-      <div className="w-full h-full gap-8 items-center justify-center text-white">
-        <h2 className="bright-gradient text-6xl h-20 font-bold">Projects</h2>
-        <div className="flex w-full h-full gap-8 items-center justify-center text-white">
+      <div className="w-full h-full gap-4 sm:gap-8 items-center justify-center text-white">
+        <h2 className="bright-gradient text-3xl sm:text-4xl lg:text-6xl h-12 sm:h-16 lg:h-20 font-bold mb-4 sm:mb-8">
+          Projects
+        </h2>
+        <div className="flex w-full h-full gap-4 sm:gap-8 items-center justify-center text-white">
           <button
-            className="hover:text-indigo-600 transition-colors text-2xl"
+            className="hover:text-indigo-600 transition-colors text-lg sm:text-xl lg:text-2xl px-2"
             onClick={previousProject}
           >
             ← Previous
           </button>
           <button
-            className="hover:text-indigo-600 transition-colors text-2xl"
+            className="hover:text-indigo-600 transition-colors text-lg sm:text-xl lg:text-2xl px-2"
             onClick={nextProject}
           >
             Next →
@@ -348,10 +231,10 @@ const ContactSection = () => {
   return (
     <Section className="contact">
       <h2
-        id="contatc-me"
-        className="accent-gradient font-bold "
+        id="contact-me"
+        className="accent-gradient font-bold text-center sm:text-left"
         style={{
-          fontSize: "min(15vw, 100px)",
+          fontSize: "min(12vw, 60px)",
         }}
       >
         Contact Me
@@ -359,10 +242,10 @@ const ContactSection = () => {
       <br />
 
       <a
-        className="text-white align-top text-4xl font-bold"
+        className="text-white text-center sm:text-left font-bold break-all"
         href="mailto:bobo@thebw.dev"
         style={{
-          fontSize: "min(7vw, 40px)",
+          fontSize: "min(5vw, 24px)",
         }}
       >
         bobo@thebw.dev
@@ -372,7 +255,7 @@ const ContactSection = () => {
         onClick={() => {
           window.open(url, "_blank");
         }}
-        className={`bg-white text-black py-2 px-4 rounded-lg font-bold text-lg mt-8`}
+        className="bg-white text-black py-2 px-4 sm:py-3 sm:px-6 rounded-lg font-bold text-sm sm:text-base lg:text-lg mt-4 sm:mt-8"
       >
         Github
       </button>

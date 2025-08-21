@@ -40,11 +40,13 @@
   width: 100vw;
   height: 100vh;
   background: black;
+  overflow-x: hidden;
 }
 
 body {
   margin: 0;
   background: #000000;
+  overflow-x: hidden;
 }
 
 #myname {
@@ -66,9 +68,20 @@ body {
   animation: textShine 5s ease-in-out infinite alternate;
 }
 
-/* shint button */
-/* @import url("https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,500&display=swap"); */
+.bright-gradient {
+  background: linear-gradient(
+    to right,
+    #7953cd 20%,
+    #00affa 30%,
+    #0190cd 70%,
+    #764ada 80%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 
+/* shiny button - responsive */
 :root {
   --shiny-cta-bg: #000000;
   --shiny-cta-bg-subtle: #1a1818;
@@ -110,9 +123,9 @@ body {
   overflow: hidden;
   cursor: pointer;
   outline-offset: 4px;
-  padding: 1rem 2rem;
+  padding: 0.75rem 1.5rem;
   font-family: inherit;
-  font-size: 1.25rem;
+  font-size: 1rem;
   line-height: 1;
   border: 1px solid transparent;
   border-radius: 360px;
@@ -144,6 +157,14 @@ body {
 
   &:active {
     translate: 0 1px;
+  }
+}
+
+/* Mobile responsive shiny button */
+@media (min-width: 640px) {
+  .shiny-cta {
+    padding: 1rem 2rem;
+    font-size: 1.25rem;
   }
 }
 
@@ -262,6 +283,7 @@ body {
 html,
 body {
   height: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -274,4 +296,15 @@ body {
   font-weight: 500;
   font-style: normal;
   -webkit-font-smoothing: antialiased;
+}
+
+/* Mobile scroll improvements */
+@media (max-width: 767px) {
+  body {
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .shiny-cta {
+    touch-action: manipulation;
+  }
 }

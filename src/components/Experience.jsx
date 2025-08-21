@@ -13,13 +13,17 @@ import { Punk } from "./Punk";
 
 export const Experience = (props) => {
   const { menuOpened } = props;
-  const { viewport } = useThree();
+  const { viewport, size } = useThree();
   const data = useScroll();
 
   const [section, setSection] = useState(0);
 
   const cameraPositionX = useMotionValue(0);
   const cameraLookAtX = useMotionValue(0);
+
+  // Check if mobile/tablet
+  const isMobile = size.width < 768;
+  const isTablet = size.width >= 768 && size.width < 1024;
 
   useEffect(() => {
     animate(cameraPositionX, menuOpened ? -5 : 0, {
@@ -60,22 +64,19 @@ export const Experience = (props) => {
 
     state.camera.position.x = cameraPositionX.get();
     state.camera.lookAt(cameraLookAtX.get(), 0, 0);
-
-    // const position = new THREE.Vector3();
-    // characterContainerAboutRef.current.getWorldPosition(position);
-    // console.log([position.x, position.y, position.z]);
-
-    // const quaternion = new THREE.Quaternion();
-    // characterContainerAboutRef.current.getWorldQuaternion(quaternion);
-    // const euler = new THREE.Euler();
-    // euler.setFromQuaternion(quaternion, "XYZ");
-
-    // console.log([euler.x, euler.y, euler.z]);
   });
+
+  // Responsive scaling factors
+  const getScaleFactor = () => {
+    if (isMobile) return 0.6;
+    if (isTablet) return 0.8;
+    return 1;
+  };
+
+  const scaleFactor = getScaleFactor();
 
   return (
     <>
-      {/* <OrbitControls /> */}
       <Environment files="/textures/cyberpunk-min.jpg" />
       <ambientLight intensity={1} color={0xffffff} />
       <directionalLight intensity={5} position={[1, 10, 1]} color={0xfd6c9e} />
@@ -91,21 +92,6 @@ export const Experience = (props) => {
         color={0xffffff}
       />
 
-      {/* <EffectComposer>
-        <Bloom
-          kernelSize={1}
-          luminanceThreshold={0}
-          luminanceSmoothing={0.4}
-          intensity={0.1}
-        />
-        <Bloom
-          kernelSize={KernelSize.HUGE}
-          luminanceThreshold={0}
-          luminanceSmoothing={0}
-          intensity={0.1}
-        />
-      </EffectComposer> */}
-      {/* <Background /> */}
       <motion.group
         position={[1.8, 0.17, 2.4]}
         rotation={[-3.1, 1.3, 3.14]}
@@ -116,45 +102,45 @@ export const Experience = (props) => {
         variants={{
           0: {
             y: -0.2,
-            x: 0.5,
-            z: 14.5,
-            scaleX: 1.5,
-            scaleY: 1.5,
-            scaleZ: 1.5,
+            x: isMobile ? 0.2 : 0.5,
+            z: isMobile ? 12 : 14.5,
+            scaleX: 1.5 * scaleFactor,
+            scaleY: 1.5 * scaleFactor,
+            scaleZ: 1.5 * scaleFactor,
             rotateY: Math.PI,
           },
           1: {
-            y: -viewport.height - 2.8,
+            y: -viewport.height - (isMobile ? 2 : 2.8),
             x: 0,
-            z: 10,
+            z: isMobile ? 8 : 10,
             rotateX: 0,
             rotateY: 0,
             rotateZ: 0,
-            scaleX: 3,
-            scaleY: 3,
-            scaleZ: 3,
+            scaleX: 3 * scaleFactor,
+            scaleY: 3 * scaleFactor,
+            scaleZ: 3 * scaleFactor,
           },
           2: {
-            x: -3,
+            x: isMobile ? -2 : -3,
             y: -viewport.height * 2 + 0.5,
-            z: 5,
+            z: isMobile ? 4 : 5,
             rotateX: 0,
             rotateY: Math.PI / 2,
             rotateZ: 0,
-            scaleX: 2,
-            scaleY: 2,
-            scaleZ: 2,
+            scaleX: 2 * scaleFactor,
+            scaleY: 2 * scaleFactor,
+            scaleZ: 2 * scaleFactor,
           },
           3: {
             y: -viewport.height * 3 + 1.1,
-            x: 1,
-            z: 25,
+            x: isMobile ? 0.5 : 1,
+            z: isMobile ? 20 : 25,
             rotateX: 0,
             rotateY: 0,
             rotateZ: 0,
-            scaleX: 2,
-            scaleY: 2,
-            scaleZ: 2,
+            scaleX: 2 * scaleFactor,
+            scaleY: 2 * scaleFactor,
+            scaleZ: 2 * scaleFactor,
           },
         }}
       >
@@ -163,21 +149,15 @@ export const Experience = (props) => {
 
       <motion.group
         position={[1.5, 2, 3]}
-        scale={[1, 1, 1]}
+        scale={[scaleFactor, scaleFactor, scaleFactor]}
         rotation-y={-Math.PI / 4}
         animate={{ y: section === 0 ? 0 : -1 }}
       >
-        {/* <Office section={section} /> */}
         <Punk />
 
-        <group
-          ref={characterContainerAboutRef}
-          name="CharacterSpot"
-          // position={[-0.2, 0, -0.8]}
-          // rotation={[-Math.PI, 0.42, -Math.PI]}
-        ></group>
+        <group ref={characterContainerAboutRef} name="CharacterSpot"></group>
       </motion.group>
-      {/* Skill */}
+
       <motion.group
         position={[0, -1.5, -10]}
         animate={{
@@ -186,42 +166,6 @@ export const Experience = (props) => {
         }}
       >
         <directionalLight position={[-5, 3, 5]} intensity={0.4} />
-        {/* <Float>
-          <mesh position={[1, -3, -15]} scale={[2, 2, 2]}>
-            <sphereGeometry />
-            <MeshDistortMaterial
-              opacity={0.8}
-              transparent
-              distort={0.4}
-              speed={4}
-              color={"red"}
-            />
-          </mesh>
-        </Float>
-        <Float>
-          <mesh scale={[3, 3, 3]} position={[3, 1, -18]}>
-            <sphereGeometry />
-            <MeshDistortMaterial
-              opacity={0.8}
-              transparent
-              distort={1}
-              speed={5}
-              color="yellow"
-            />
-          </mesh>
-        </Float>
-        <Float>
-          <mesh scale={[1.4, 1.4, 1.4]} position={[-3, -1, -11]}>
-            <boxGeometry />
-            <MeshWobbleMaterial
-              opacity={0.8}
-              transparent
-              factor={1}
-              speed={5}
-              color={"blue"}
-            />
-          </mesh>
-        </Float> */}
       </motion.group>
 
       <Projects />

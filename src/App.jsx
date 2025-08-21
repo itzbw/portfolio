@@ -17,6 +17,20 @@ function App() {
   const [menuOpened, setMenuOpened] = useState(false);
   const [loading, setLoading] = useState(true);
 
+  // Check for mobile device
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   // if scroll then close the menu
   useEffect(() => {
     setMenuOpened(false);
@@ -28,6 +42,14 @@ function App() {
     });
   }, []);
 
+  // Responsive camera settings
+  const getCameraSettings = () => {
+    if (isMobile) {
+      return { position: [0, 10, 80], fov: 15 };
+    }
+    return { position: [0, 10, 60], fov: 10 };
+  };
+
   return (
     <>
       <MotionConfig
@@ -36,7 +58,7 @@ function App() {
         }}
       >
         {loading && <LoadBar />}
-        <Canvas shadows camera={{ position: [0, 10, 60], fov: 10 }}>
+        <Canvas shadows camera={getCameraSettings()}>
           <color attach="background" args={["#000000"]} />
 
           <ScrollControls pages={4} damping={0.1}>
@@ -57,7 +79,7 @@ function App() {
           setMenuOpened={setMenuOpened}
         />
 
-        {/* <Cursor /> */}
+        {!isMobile && <Cursor />}
       </MotionConfig>
 
       <Leva hidden />

@@ -64,6 +64,7 @@ export const projects = [
 
 const Project = (props) => {
   const { project, highlighted } = props;
+  const { size } = useThree();
 
   const background = useRef();
   const bkgOpacity = useMotionValue(0.4);
@@ -76,6 +77,40 @@ const Project = (props) => {
     background.current.material.opacity = bkgOpacity.get();
   });
 
+  // Responsive sizing
+  const isMobile = size.width < 768;
+  const isTablet = size.width >= 768 && size.width < 1024;
+
+  const getProjectScale = () => {
+    if (isMobile) return [3, 2.5, 2];
+    if (isTablet) return [3.5, 2.7, 2];
+    return [4.5, 3.5, 2];
+  };
+
+  const getImageScale = () => {
+    if (isMobile) return [2.5, 1.8, 2];
+    if (isTablet) return [3.2, 2.2, 2];
+    return [4, 2.5, 2];
+  };
+
+  const getFontSize = () => {
+    if (isMobile) return 0.2;
+    if (isTablet) return 0.25;
+    return 0.3;
+  };
+
+  const getDescriptionFontSize = () => {
+    if (isMobile) return 0.15;
+    if (isTablet) return 0.18;
+    return 0.2;
+  };
+
+  const getMaxWidth = () => {
+    if (isMobile) return 2.5;
+    if (isTablet) return 3.2;
+    return 4;
+  };
+
   return (
     <group {...props}>
       <mesh
@@ -83,34 +118,33 @@ const Project = (props) => {
         onClick={() => window.open(project.url, "_blank")}
         ref={background}
       >
-        <planeGeometry args={[4.5, 3.5]} />
+        <planeGeometry args={getProjectScale()} />
         <meshBasicMaterial color="grey" transparent opacity={0.5} />
       </mesh>
       <Image
-        scale={[4, 2.5, 2]}
+        scale={getImageScale()}
         url={project.image}
         toneMapped={false}
         position-y={0.3}
       />
 
       <Text
-        // color={"black"}
-        maxWidth={4}
+        maxWidth={getMaxWidth()}
         anchorX={"left"}
         anchorY={"top"}
-        fontSize={0.3}
-        position={[-2, -1, 0]}
+        fontSize={getFontSize()}
+        position={[getMaxWidth() / -2, -1, 0]}
       >
         {project.title.toUpperCase()}
       </Text>
 
       <Text
         color="black"
-        maxWidth={4}
+        maxWidth={getMaxWidth()}
         anchorX="left"
         anchorY="top"
-        fontSize={0.2}
-        position={[-2, -1.4, 0]}
+        fontSize={getDescriptionFontSize()}
+        position={[getMaxWidth() / -2, -1.4, 0]}
       >
         {project.description}
       </Text>
@@ -121,8 +155,15 @@ const Project = (props) => {
 export const currentProjectAtom = atom(0);
 
 export const Projects = () => {
-  const { viewport } = useThree();
+  const { viewport, size } = useThree();
   const [currentProject] = useAtom(currentProjectAtom);
+
+  // Responsive spacing
+  const isMobile = size.width < 768;
+  const getProjectSpacing = () => {
+    if (isMobile) return 4;
+    return 5;
+  };
 
   return (
     <group position-y={-viewport.height * 2 + 1}>
@@ -131,7 +172,7 @@ export const Projects = () => {
           key={"project_" + index}
           position={[index * 2.5, 0, -3]}
           animate={{
-            x: 0 + (index - currentProject) * 5,
+            x: 0 + (index - currentProject) * getProjectSpacing(),
             y: currentProject === index ? 0 : -0.1,
             z: currentProject === index ? -2 : -3,
             rotateX: currentProject === index ? 0 : -Math.PI / 3,
