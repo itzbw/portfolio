@@ -7,6 +7,24 @@ import { animate, useMotionValue } from "framer-motion";
 
 export const projects = [
   {
+    title: "Swifty Companion",
+    image: "/projects/companion.png",
+    url: "https://github.com/itzbw/swiftyCompanion",
+    description: "A mobile app using 42 API",
+  },
+  {
+    title: "Yfebo",
+    image: "/projects/yfebo.png",
+    url: "https://github.com/itzbw/yfebo",
+    description: "A weather app using open-meteo API",
+  },
+  {
+    title: "Dear Diary",
+    image: "/projects/diary.png",
+    url: "https://github.com/itzbw/dearDiary",
+    description: "A journal app using supabase",
+  },
+  {
     title: "42 Projects",
     image: "/projects/42.jpg",
     url: "https://github.com/itzbw/42",
