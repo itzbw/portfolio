@@ -81,13 +81,21 @@ const AboutSection = (props) => {
 };
 
 const skills = [
+  { title: "JavaScript" },
+  { title: "TypeScript" },
+  { title: "React" },
+  { title: "ReactNative" },
+  { title: "Node.js" },
+  { title: "Next.js" },
+  { title: "Three.js" },
   { title: "HTML" },
   { title: "CSS" },
-  { title: "JavaScript" },
+  { title: "Tailwind" },
   { title: "C" },
-  { title: "Three.js" },
-  { title: "React" },
-  { title: "Node.js" },
+  { title: "Git" },
+  { title: "Stripe" },
+  { title: "Wordpress" },
+  { title: "Elementor" },
 ];
 
 const languages = [
@@ -102,7 +110,7 @@ const SkillList = ({ items }) =>
   items.map((skill, index) => (
     <motion.div
       key={index}
-      className="text-base sm:text-lg lg:text-xl font-bold text-white mb-2 mr-2 sm:mr-4"
+      className="text-base sm:text-lg lg:text-xl font-bold text-white mb-2"
       initial={{ opacity: 0, x: -20 }}
       variants={{
         visible: {
@@ -165,7 +173,7 @@ const SkillSection = () => {
         >
           Skills
         </motion.h2>
-        <div className="flex flex-wrap gap-y-2 mb-6 sm:mb-10 w-full">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2 mb-6 sm:mb-10 w-full max-w-md">
           <SkillList items={skills} />
         </div>
 
